@@ -1,0 +1,138 @@
+# Copyright (c) 2025 Blue Sky Mind LLC
+# All Rights Reserved.
+
+# Environment variables and secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.crt
+*.p12
+
+# Google Cloud credentials
+*-key.json
+service-account*.json
+credentials*.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+VENV/
+.venv
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
+
+# Poetry
+poetry.lock
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.bak
+
+# Data files
+*.mdb
+*.accdb
+*.csv
+*.parquet
+*.json
+!package.json
+!package-lock.json
+!schema/*.json
+
+# Temporary files
+/tmp/
+/temp/
+*.tmp
+*.temp
+*.log
+
+# BigQuery
+*.bq
+
+# Docker
+.dockerignore
+
+# Test outputs
+htmlcov/
+.hypothesis/
+
+# Documentation
+docs/_build/
+site/
+
+# Local development
+.local/
+scratch/
+sandbox/
+
+# Downloaded IPEDS data
+data/
+downloads/
+raw/
+staging/
+
+# dbt
+target/
+dbt_packages/
+logs/
+
+# Terraform (if used for infrastructure)
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# Secrets and sensitive info
+secrets/
+.secrets/
+*_secret*
+*_private*

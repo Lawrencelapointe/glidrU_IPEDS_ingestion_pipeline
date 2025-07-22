@@ -1,0 +1,51 @@
+[tool.poetry]
+name = "windsurf-ipeds-pipeline"
+version = "0.1.0"
+description = "Reusable IPEDS ingestion pipeline for BigQuery"
+authors = ["Blue Sky Mind LLC"]
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+typer = "^0.9.0"
+python-dotenv = "^1.0.0"
+google-cloud-bigquery = "^3.13.0"
+google-cloud-storage = "^2.10.0"
+pandas = "^2.1.4"
+pyarrow = "^14.0.1"
+requests = "^2.31.0"
+pydantic = "^2.5.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+pytest-cov = "^4.1.0"
+mypy = "^1.7.1"
+ruff = "^0.1.7"
+black = "^23.12.0"
+pre-commit = "^3.5.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "I", "N", "W", "B", "UP"]
+ignore = ["E501"]  # line too long - handled by black
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+strict = true
+
+[tool.black]
+line-length = 88
+target-version = ['py312']
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+addopts = "-v --cov=src --cov-report=term-missing"
