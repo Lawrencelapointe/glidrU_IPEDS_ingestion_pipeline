@@ -24,7 +24,7 @@ def temp_config_file():
 raw_bucket = gs://test-ipeds-raw
 staging_dataset = test_staging
 mart_dataset = test_mart
-temp_dir = /tmp/test-windsurf
+temp_dir = /tmp/test-glidru
 
 [ipeds]
 default_year = 2023
@@ -82,7 +82,7 @@ class TestConfigManager:
         assert config.paths.raw_bucket == "gs://test-ipeds-raw"
         assert config.paths.staging_dataset == "test_staging"
         assert config.paths.mart_dataset == "test_mart"
-        assert config.paths.temp_dir == "/tmp/test-windsurf"
+        assert config.paths.temp_dir == "/tmp/test-glidru"
         
         # Test ipeds section
         assert config.ipeds.default_year == 2023
@@ -152,8 +152,18 @@ class TestConfigManager:
         manager = ConfigManager(config_path=temp_config_file)
         
         # Should raise error when not set
-        with pytest.raises(ValueError, match="GOOGLE_APPLICATION_CREDENTIALS"):
-            manager.get_credentials_path()
+        # Temporarily clear the environment variable for this test
+        original_value = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
+        if "GOOGLE_APPLICATION_CREDENTIALS" in os.environ:
+            del os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
+        
+        try:
+            with pytest.raises(ValueError, match="GOOGLE_APPLICATION_CREDENTIALS"):
+                manager.get_credentials_path()
+        finally:
+            # Restore original value if it existed
+            if original_value is not None:
+                os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = original_value
         
         # Should return path when set and file exists
         with tempfile.NamedTemporaryFile() as f:

@@ -1,4 +1,4 @@
-# Windsurf IPEDS Pipeline
+# GlidrU IPEDS Pipeline
 
 Copyright (c) 2025 Blue Sky Mind LLC. All Rights Reserved.
 

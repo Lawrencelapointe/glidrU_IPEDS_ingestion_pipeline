@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "windsurf-ipeds-pipeline"
+name = "glidru-ipeds-pipeline"
 version = "0.1.0"
 description = "Reusable IPEDS ingestion pipeline for BigQuery"
 authors = ["Blue Sky Mind LLC"]

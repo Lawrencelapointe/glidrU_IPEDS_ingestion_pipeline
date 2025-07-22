@@ -1,0 +1,9 @@
+mart_dataset_id = "ipeds_mart"
+raw_bucket_name = "glidru-ipeds-pipeline-ipeds-raw"
+raw_bucket_url = "gs://glidru-ipeds-pipeline-ipeds-raw"
+service_account_roles = [
+  "roles/storage.admin",
+  "roles/bigquery.admin",
+  "roles/bigquery.jobUser",
+]
+staging_dataset_id = "ipeds_staging"

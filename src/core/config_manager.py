@@ -176,9 +176,12 @@ class ConfigManager:
             
             # Convert specific fields to correct types
             if "ipeds" in config_dict:
-                config_dict["ipeds"]["default_year"] = int(
-                    config_dict["ipeds"].get("default_year", 2024)
-                )
+                try:
+                    config_dict["ipeds"]["default_year"] = int(
+                        config_dict["ipeds"].get("default_year", 2024)
+                    )
+                except ValueError as e:
+                    raise ValueError(f"Invalid configuration: {e}")
             
             return Config(**config_dict)
             
@@ -187,7 +190,7 @@ class ConfigManager:
     
     def get_credentials_path(self) -> Path:
         """Get the path to Google Cloud credentials."""
-        creds = self.get_env("GOOGLE_APPLICATION_CREDENTIALS")
+        creds = self.get_env("GOOGLE_APPLICATION_CREDENTIALS", required=False)
         if not creds:
             raise ValueError(
                 "GOOGLE_APPLICATION_CREDENTIALS environment variable not set. "

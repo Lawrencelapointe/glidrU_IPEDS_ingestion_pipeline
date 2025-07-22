@@ -1,4 +1,4 @@
-# Windsurf IPEDS Pipeline - Container Image
+# GlidrU IPEDS Pipeline - Container Image
 # Base: Python 3.12 slim + mdbtools for MDB file extraction
 
 FROM python:3.12-slim
@@ -31,7 +31,7 @@ COPY src/ ./src/
 COPY config/ ./config/
 
 # Create required directories
-RUN mkdir -p /tmp/windsurf-ipeds /secrets
+RUN mkdir -p /tmp/glidru-ipeds /secrets
 
 # Set Python path
 ENV PYTHONPATH=/app
