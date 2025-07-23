@@ -185,6 +185,13 @@ raw_bucket = gs://test-bucket
 
 [ipeds]
 default_year = not_a_number
+mdb_base_url = https://test.com
+
+[bigquery]
+location = US
+
+[logging]
+level = INFO
 """
         
         with tempfile.NamedTemporaryFile(mode='w', suffix='.ini', delete=False) as f:
